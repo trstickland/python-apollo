@@ -217,12 +217,9 @@ class UsersClient(Client):
         """
         return self.post('deleteUser', {'userToDelete': user})
 
-    def update_user(self, email, first_name, last_name, password, metadata={}):
+    def update_user(self, email, first_name, last_name, password, **kwargs):
         """
         Update an existing user
-
-        :type username: str
-        :param username: User's Apollo username
 
         :type email: str
         :param email: User's email
@@ -239,11 +236,16 @@ class UsersClient(Client):
         :type metadata: dict
         :param metadata: User metadata
 
+        :type metadata: dict
+        :param metadata: User metadata
+
         :rtype: dict
         :return: a dictionary containing user information
         """
+        userId   = kwargs.get('userId', None)
+        metadata = kwargs.get('metadata', {})
         data = {
-            'username' : username,
+            'userId': userId,
             'email': email,
             'firstName': first_name,
             'lastName': last_name,
