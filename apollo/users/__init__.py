@@ -217,7 +217,7 @@ class UsersClient(Client):
         """
         return self.post('deleteUser', {'userToDelete': user})
 
-    def update_user(self, email, first_name, last_name, password, metadata={}):
+    def update_user(self, email, first_name, last_name, password, **kwargs):
         """
         Update an existing user
 
@@ -233,13 +233,19 @@ class UsersClient(Client):
         :type password: str
         :param password: User's password
 
+        :type userId: int
+        :param UserId: (Optional) User ID.  This is the numerical user ID, which must be used if you wish to update the email address.
+
         :type metadata: dict
         :param metadata: User metadata
 
         :rtype: dict
         :return: a dictionary containing user information
         """
+        userId   = kwargs.get('userId', None)
+        metadata = kwargs.get('metadata', {})
         data = {
+            'userId': userId,
             'email': email,
             'firstName': first_name,
             'lastName': last_name,
