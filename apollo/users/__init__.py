@@ -221,6 +221,9 @@ class UsersClient(Client):
         """
         Update an existing user
 
+        :type username: str
+        :param username: User's Apollo username
+
         :type email: str
         :param email: User's email
 
@@ -240,6 +243,7 @@ class UsersClient(Client):
         :return: a dictionary containing user information
         """
         data = {
+            'username' : username,
             'email': email,
             'firstName': first_name,
             'lastName': last_name,
