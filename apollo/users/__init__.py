@@ -233,8 +233,8 @@ class UsersClient(Client):
         :type password: str
         :param password: User's password
 
-        :type metadata: dict
-        :param metadata: User metadata
+        :type userId: int
+        :param UserId: (Optional) User ID.  This is the numerical user ID, which must be used if you wish to update the email address.
 
         :type metadata: dict
         :param metadata: User metadata
